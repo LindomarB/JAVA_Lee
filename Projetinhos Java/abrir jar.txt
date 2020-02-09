@@ -1,0 +1,2 @@
+ir na pasta dos projetos e abrir a pasta dist la dento execuar o arquivo batch
+ com o mesmo nome do arquivo Jar
