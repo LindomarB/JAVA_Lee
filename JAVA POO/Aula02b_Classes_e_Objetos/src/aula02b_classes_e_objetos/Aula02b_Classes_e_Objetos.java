@@ -17,9 +17,11 @@ public class Aula02b_Classes_e_Objetos {
         c2.modelo = "Galopante Carmesim";
         c2.cor = "Vermelha";
         c2.ponta =  1.0;
-        c2.destampar();
+        c2.tampar();
         c2.status();
         c2.rabiscar();
+        
+      
     
 } 
 
