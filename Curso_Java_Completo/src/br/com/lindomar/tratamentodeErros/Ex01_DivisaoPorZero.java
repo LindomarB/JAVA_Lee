@@ -30,7 +30,12 @@ public class Ex01_DivisaoPorZero {
             }
             catch(NumberFormatException erro1){
                 JOptionPane.showMessageDialog(null,"Ocorreu  um erro \n"+erro1+"\n Digite somente Valores Inteiros");
-               
+
+            }
+            finally{// executa independente do try e do catch ou seja tend oerros ou nao o bloco finally e a garantia qye esse bloc osera executado
+                // otipo para fechar sessoes do banco de dados, e liberar memoria na aplicaçao.
+                JOptionPane.showMessageDialog(null,"Executou o bloco Finally");
+            
             }
         } while (continua);
         

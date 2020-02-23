@@ -6,6 +6,7 @@ public class Aula5_ContadeBanco {
 
    
     public static void main(String[] args) {
+     
      ContaBanco c1 = new ContaBanco();
      c1.setnumConta(81935446);
      c1.abrirConta("cp");
@@ -18,5 +19,7 @@ public class Aula5_ContadeBanco {
      c2.abrirConta("cc");
      c2.mostra();
     }
+    
+    
     
 }
