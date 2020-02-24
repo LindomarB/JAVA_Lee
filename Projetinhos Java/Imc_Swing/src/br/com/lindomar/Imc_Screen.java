@@ -5,7 +5,10 @@
  */
 package br.com.lindomar;
 
+import java.awt.Color;
 import java.text.DecimalFormat;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +21,15 @@ public class Imc_Screen extends javax.swing.JFrame {
      */
     public Imc_Screen() {
         initComponents();
+        txt1.setVisible(false);
+        txt2.setVisible(false);
+        txt3.setVisible(false);
+        txt4.setVisible(false);
+        txt5.setVisible(false);
+        txt6.setVisible(false);
+        txt7.setVisible(false);
+        
+        
     }
 
     /**
@@ -29,31 +41,46 @@ public class Imc_Screen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        painelImagemFundo1 = new br.com.lindomar.PainelImagemFundo();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtpeso = new java.awt.TextField();
+        jLabel2 = new javax.swing.JLabel();
         txtaltura = new java.awt.TextField();
-        txtresultado = new java.awt.TextField();
         btnCalcula = new java.awt.Button();
+        jLabel3 = new javax.swing.JLabel();
+        lblres = new javax.swing.JLabel();
+        txt1 = new javax.swing.JLabel();
+        txt2 = new javax.swing.JLabel();
+        txt3 = new javax.swing.JLabel();
+        txt4 = new javax.swing.JLabel();
+        txt5 = new javax.swing.JLabel();
+        txt6 = new javax.swing.JLabel();
+        txt7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora de Imc");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        painelImagemFundo1.setImg(new ImageIcon("src/images/back.jpg"));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Peso : ");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtpeso.setText("0");
+        txtpeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpesoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Altura :");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("I.M.C = ");
-
-        txtpeso.setText("textField1");
-
-        txtaltura.setText("textField2");
-
-        txtresultado.setText("textField3");
+        txtaltura.setText("0");
+        txtaltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtalturaActionPerformed(evt);
+            }
+        });
 
         btnCalcula.setLabel("Calcular IMC");
         btnCalcula.addActionListener(new java.awt.event.ActionListener() {
@@ -62,56 +89,114 @@ public class Imc_Screen extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("I.M.C = ");
+
+        lblres.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblres.setText("0.00");
+
+        txt1.setBackground(new java.awt.Color(255, 255, 0));
+        txt1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt1.setForeground(new java.awt.Color(51, 51, 255));
+        txt1.setText("          IMC                        Resultado");
+
+        txt2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt2.setText("Menos do que 18,5     Abaixo do peso");
+
+        txt3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt3.setText("Entre 18,5 e 24,9        Peso normal");
+
+        txt4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt4.setText("Entre 25 e 29,9           Sobrepeso");
+
+        txt5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt5.setText("Entre 30 e 34,9          Obesidade grau 1");
+
+        txt6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt6.setText("Entre 35 e 39,9          Obesidade grau 2");
+
+        txt7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txt7.setText("Mais do que 40           Obesidade grau 3");
+
+        javax.swing.GroupLayout painelImagemFundo1Layout = new javax.swing.GroupLayout(painelImagemFundo1);
+        painelImagemFundo1.setLayout(painelImagemFundo1Layout);
+        painelImagemFundo1Layout.setHorizontalGroup(
+            painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemFundo1Layout.createSequentialGroup()
+                .addContainerGap(115, Short.MAX_VALUE)
+                .addGroup(painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemFundo1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemFundo1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblres)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnCalcula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt5)
+                        .addComponent(txt6)
+                        .addComponent(txt7)
+                        .addComponent(txt1)))
+                .addGap(16, 16, 16))
+        );
+        painelImagemFundo1Layout.setVerticalGroup(
+            painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelImagemFundo1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelImagemFundo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblres)
+                        .addComponent(jLabel3))
+                    .addComponent(btnCalcula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txt1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt4)
+                .addGap(1, 1, 1)
+                .addComponent(txt5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt7)
+                .addGap(40, 40, 40))
+        );
+
+        btnCalcula.getAccessibleContext().setAccessibleParent(btnCalcula);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtresultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(20, 20, 20)
-                                    .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(101, 101, 101))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCalcula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(155, 155, 155))))
+            .addComponent(painelImagemFundo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(txtpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(txtaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btnCalcula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtresultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(55, 55, 55))
+            .addComponent(painelImagemFundo1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnCalculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaActionPerformed
         double peso = Double.parseDouble(txtpeso.getText());
         double altura = Double.parseDouble(txtaltura.getText());
@@ -120,8 +205,45 @@ public class Imc_Screen extends javax.swing.JFrame {
         
         double imc = c.calcula(peso, altura);
         String res  = df.format(imc).toString();
-        txtresultado.setText(res);
+        lblres.setText(res);
+        JOptionPane.showMessageDialog(null,"Sua imc é "+ res);
+        if(imc < 18.5){
+            JOptionPane.showMessageDialog(null,"Abaixo do peso");
+            txt2.setForeground(Color.RED);
+        }else if(imc >18.5 && imc < 24.9){
+            JOptionPane.showMessageDialog(null,"Peso Normal");
+            txt3.setForeground(Color.RED);
+        }else if(imc > 25 && imc < 29.9){
+            JOptionPane.showMessageDialog(null,"Sobrepeso");
+            txt4.setForeground(Color.RED);
+        }else if(imc > 30 && imc < 34.9){
+            JOptionPane.showMessageDialog(null,"Obesidade Grau 1");
+            txt5.setForeground(Color.RED);
+        }else if(imc > 35 && imc < 39.9){
+            JOptionPane.showMessageDialog(null,"Obesidade Grau 2");
+            txt6.setForeground(Color.RED);
+        }else{
+            JOptionPane.showMessageDialog(null,"Obesidade Grau 3");
+            txt7.setForeground(Color.RED);
+        }
+        txt1.setVisible(true);
+        txt2.setVisible(true);
+        txt3.setVisible(true);
+        txt4.setVisible(true);
+        txt5.setVisible(true);
+        txt6.setVisible(true);
+        txt7.setVisible(true);
+        
+        
     }//GEN-LAST:event_btnCalculaActionPerformed
+
+    private void txtpesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpesoActionPerformed
+
+    private void txtalturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtalturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtalturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,8 +285,16 @@ public class Imc_Screen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblres;
+    private br.com.lindomar.PainelImagemFundo painelImagemFundo1;
+    private javax.swing.JLabel txt1;
+    private javax.swing.JLabel txt2;
+    private javax.swing.JLabel txt3;
+    private javax.swing.JLabel txt4;
+    private javax.swing.JLabel txt5;
+    private javax.swing.JLabel txt6;
+    private javax.swing.JLabel txt7;
     private java.awt.TextField txtaltura;
     private java.awt.TextField txtpeso;
-    private java.awt.TextField txtresultado;
     // End of variables declaration//GEN-END:variables
 }
