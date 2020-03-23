@@ -6,32 +6,36 @@ public class Conta {
 	private double saldo = 0;
 	private double limite = 1000;
 	private Scanner s = new Scanner(System.in);
-	static int contador;
+	static int contador=120000;
 	
 
 
 	public Conta() {
 		System.out.println("Construtor 1");
 		Conta . contador ++;
+		this.numero = Conta.getContador();
 	}
 	
 	public Conta(int numero) {
 		this.numero = numero;
 		System.out.println("Construtor 2");
 		Conta . contador ++;
+		this.numero = Conta.getContador();
 	}
 	
 	public Conta(double limite) {
 		this.limite = limite;
 		System.out.println("Construtor 3");
 		Conta . contador ++;
+		this.numero = Conta.getContador();
 	}
 	
 	public Conta(int numero, double limite) {
 		this(numero);//um construtor pode fazer uma chamada a outro desde que seja única e na primeira linha
 		this.limite = limite;
 		System.out.println("Construtor 3");
-		Conta . contador ++;
+		this.numero = Conta.getContador();
+		//
 	}
 	
 	public static int getContador() {

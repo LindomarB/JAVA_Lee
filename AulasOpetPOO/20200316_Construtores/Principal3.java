@@ -27,19 +27,22 @@ public class Principal3 {
 		Conta c1 = new Conta();
 		System.out.println("Contador de Objects c[1]: "+Conta.contador);
 		c1.mostra();
-		System.out.println("chamada pelo metodo"+c1.getContador());
+		System.out.println("chamada pelo metodo :"+Conta.getContador());
 		
 		Conta c2 = new Conta(33);
 		System.out.println("Contador de Objects c[2]: "+Conta.contador);
 		c2.mostra();
+		System.out.println("chamada pelo metodo :"+Conta.getContador());
 		
 		Conta c3 = new Conta(3000.0);
 		System.out.println("Contador de Objects c[3]: "+Conta.contador);
 		c3.mostra();
+		System.out.println("chamada pelo metodo :"+Conta.getContador());
 		
 		Conta c4 = new Conta(22, 4000);
 		System.out.println("Contador de Objects c[4]: "+Conta.contador);
 		c4.mostra();
+		System.out.println("chamada pelo metodo :"+Conta.getContador());
 		
 	}
 
