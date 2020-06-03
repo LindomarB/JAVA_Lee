@@ -9,10 +9,10 @@
 <body>
 	<form action='executa_excluir.jsp' method='post'>
 		<label>Código:</label><br>
-		<input type="text" name="codigo" value="<%=request.getParameter("codigo") %>"/><br>
+		<input type="text" name="codigo" value="<%=request.getParameter("codigo")%>"/><br>
 		 
 		<label>Descrição:</label><br>
-		<input type="text" name="descricao"value="<%=request.getParameter("descricao") %>"/><br>
+		<input type="text" name="descricao"value="<%=request.getParameter("descricao")%>"/><br>
 		
 		
 		<button type="submit">
