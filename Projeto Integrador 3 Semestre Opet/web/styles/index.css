@@ -1,0 +1,27 @@
+
+body{
+    background-color: lightblue;  
+}
+div#tela {
+    width: 30%;
+    height: 20%;
+    background-color: lightblue;
+    border-radius: 10px;
+    border-color: black;
+    margin-left: 30%;
+    box-shadow: 5px 5px 10px black;
+    text-align: center;
+    margin-top: 10%;
+}
+h1{
+    text-align: center;
+}
+div#ads {
+    width: 30%;
+    height: 100px;
+    background-color:red;
+    
+    margin-left: 30%;
+    
+}
+

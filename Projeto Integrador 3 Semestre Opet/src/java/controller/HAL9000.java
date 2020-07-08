@@ -45,13 +45,16 @@ public class HAL9000 extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HAL9000 at " + request.getContextPath() + "</h1>");
-            out.print("<p>tipo: "+request.getParameter("tipo")+"</p>");
+            out.print("<p>id tarefa: "+request.getParameter("idtarefa")+"</p>");
+            out.print("<p>tipo: "+request.getParameter("idtipo")+"</p>");
             out.print("<p> desc: "+request.getParameter("descricao")+"</p>");
             out.print("<p> data solici: "+request.getParameter("dtsolicitacao")+"</p>");
             out.print("<p>data reali: "+request.getParameter("dtrealizacao")+"</p>");
             out.print("<p>data limite: "+request.getParameter("dtlimite")+"</p>");
-            out.print("<p> id do req: "+request.getParameter("idrequisitante")+"</p>");
-            out.print("<p>id do exec: "+request.getParameter("idexecutor")+"</p>");
+            out.print("<p> id do exec: "+request.getParameter("idexc")+"</p>");
+      
+            out.print("<p> reqapelido: "+request.getParameter("reqapelido")+"</p>");
+            
             
            
             ////////////////////INICIO LOGIN////////////////////////
@@ -63,6 +66,7 @@ public class HAL9000 extends HttpServlet {
                 if(teste.logar(request.getParameter("apelido"),request.getParameter("senha"))){
                     request.setAttribute("usuario", request.getParameter("apelido"));
                     rd = request.getRequestDispatcher("/logado.jsp");
+                    
                 }else{
                     
                     request.setAttribute("mensagem", "Usuário não existente");
@@ -106,6 +110,9 @@ public class HAL9000 extends HttpServlet {
                 if(request.getParameter("tipo").equals("doacao")){
                     t.setTipoId(3);
                 }
+                if(request.getParameter("tipo").equals("transporte")){
+                    t.setTipoId(4);
+                }
                 t.setTarefaDescricao(request.getParameter("descricao"));
                 t.setDtsolicitacao(request.getParameter("dtsolicitacao"));
                 t.setDtrealizaçao(request.getParameter("dtrealizacao"));
@@ -114,8 +121,83 @@ public class HAL9000 extends HttpServlet {
                 t.setIdExecutor(Integer.parseInt(request.getParameter("idexecutor")));
                 TarefaDAO tdao = new TarefaDAO();
                 tdao.inserir(t);
+                RequestDispatcher rd;
+                request.setAttribute("usuario", request.getParameter("reqapelido"));
+                rd = request.getRequestDispatcher("/logado.jsp");
+                rd.forward(request,response);
             }
+            //////////////////////fim nova tarefa ////////////////
+            
+            ////////////////////inicio  altera tarefa////////////////
+            if(acao.equals("alteratarefa")){
+                Tarefa t = new Tarefa();
+                t.setTarefaId(Integer.parseInt(request.getParameter("idtarefa")));
+                
+                if(request.getParameter("tipo").equals("servico")){
+                    t.setTipoId(1);
+                }
+                if(request.getParameter("tipo").equals("voluntariado")){
+                    t.setTipoId(2);
+                }
+                if(request.getParameter("tipo").equals("doacao")){
+                    t.setTipoId(3);
+                }
+                if(request.getParameter("tipo").equals("transporte")){
+                    t.setTipoId(4);
+                }
+                t.setTarefaDescricao(request.getParameter("descricao"));
+                t.setDtsolicitacao(request.getParameter("dtsolicitacao"));
+                t.setDtrealizaçao(request.getParameter("dtrealizacao"));
+                t.setDtlimite(request.getParameter("dtlimite"));
+                t.setIdExecutor(Integer.parseInt(request.getParameter("idexc")));
+                t.setApelidoRequisitante(request.getParameter("reqapelido"));
+                TarefaDAO tdao = new TarefaDAO();
+                tdao.alterar(t,t.getTarefaId());
+                RequestDispatcher rd;
+                request.setAttribute("usuario", request.getParameter("reqapelido"));
+                rd = request.getRequestDispatcher("/logado.jsp");
+                rd.forward(request,response);
+            }
+            ////////////////////fim altera tarefa////////////
+            
+            ///////////inicio excluir tarefa////////////////
+            if(acao.equals("excluirtarefa")){
+                Tarefa t = new Tarefa();
+                t.setTarefaId(Integer.parseInt(request.getParameter("idtarefa")));
+                TarefaDAO tdao = new TarefaDAO();
+                tdao.excluir(t.getTarefaId());
+                RequestDispatcher rd;
+                request.setAttribute("usuario", request.getParameter("reqapelido"));
+                rd = request.getRequestDispatcher("/logado.jsp");
+                rd.forward(request,response);
+            }
+
+            ///////////fim excluir tarefa//////////////////
+            
+            
+            /////////////////inicio concluir///////////////
+            if(acao.equals("concluirtarefa")){
+                Tarefa t = new Tarefa();
+                t.setTarefaId(Integer.parseInt(request.getParameter("idtarefa")));
+                t.setTipoId(Integer.parseInt(request.getParameter("idtipo")));
+                t.setTarefaDescricao(request.getParameter("descricao"));
+                t.setDtsolicitacao(request.getParameter("dtsolicitacao"));
+                t.setDtrealizaçao(request.getParameter("dtrealizacao"));
+                t.setDtlimite(request.getParameter("dtlimite"));
+                t.setIdExecutor(Integer.parseInt(request.getParameter("idexc")));
+                TarefaDAO tdao = new TarefaDAO();
+                tdao.alterar(t,t.getTarefaId());
+                RequestDispatcher rd;
+                request.setAttribute("usuario", request.getParameter("execapelido"));
+                rd = request.getRequestDispatcher("/logado.jsp");
+                rd.forward(request,response);
+                
+            }
+            
+            ////////////////Fim concluir    ///////////////
           
+            
+            
             out.println("</body>");
             out.println("</html>");
         }

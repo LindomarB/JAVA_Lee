@@ -9,30 +9,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Alterar tarefa</title>
+        <link rel="stylesheet" href="styles/alteratarefa.css">
     </head>
     <body>
-        idtarefa,idtipo,tiponome,descricao,dtsolicitacao,dtrealizacao,dtlimite,idreq,reqapelido,idexc,excapelido
+       
         
-        
-    <br0<br><br>
-        nao e preciso mostrar todos esses campos ao usuario somente <br>
-        o que for pertinente a elem,<br>
-        por traz ira carregar todos esses dados para enviar ao controller e executar a açao no banco<br>
-        <h2>so e possivel alterar se a tarefa for do proprio usuario logado. obs ele pode alterar tarefas já concluidas?</h2>
-        <form action='HAL9000' method='post'>
-		<label>id tarefa:</label><br>
-		<input type="text" name="idtarefa" value="<%=request.getParameter("idtarefa") %>"/><br>
-		 
-		<label>Id tipo:</label><br>
-		<input type="text" name="idtipo"value="<%=request.getParameter("idtipo") %>"/><br>
+        <div id="tela">
+            <h1>Alterar tarefa</h1>
+            <hr size="2px" color="black" width="80%">
+            <form action='HAL9000' method='get'>
 		
-                <label>tiponome:</label><br>
-		<input type="text" name="tiponome"value="<%=request.getParameter("tiponome") %>"/><br>
+		<input type="text" hidden="hidden" name="idtarefa" value="<%=request.getParameter("idtarefa") %>"/>
+		 
+		
+		<input type="text" hidden="hidden" name="idtipo"value="<%=request.getParameter("idtipo") %>"/>
                 
+		
+                <label>Tipo:</label><br>
+                <input list="tipos" name="tipo" placeholder="<%=request.getParameter("tiponome") %>"><br>
+		
                 <label>Descrição:</label><br>
 		<input type="text" name="descricao"value="<%=request.getParameter("descricao") %>"/><br>
-                
+               
                 <label>Dtsolicitacao:</label><br>
 		<input type="text" name="dtsolicitacao"value="<%=request.getParameter("dtsolicitacao") %>"/><br>
                 
@@ -42,20 +41,27 @@
                 <label>Dtlimite:</label><br>
 		<input type="text" name="dtlimite"value="<%=request.getParameter("dtlimite") %>"/><br>
                 
-                <label>id req:</label><br>
-		<input type="text" name="idreq"value="<%=request.getParameter("idreq") %>"/><br>
+               
+		<input type="text" hidden="hidden" name="reqapelido"value="<%=request.getParameter("reqapelido") %>"/>
+    
                 
-                <label>apelido req:</label><br>
-		<input type="text" name="reqapelido"value="<%=request.getParameter("reqapelido") %>"/><br>
+		<input type="text" hidden="hidden" name="idexc"value="<%=request.getParameter("idexc") %>"/>
                 
-                <label>id exc:</label><br>
-		<input type="text" name="idexc"value="<%=request.getParameter("idexc") %>"/><br>
+                <label>Executor:</label><br>
+		<input type="text" name="execapelido" Readonly value="<%=request.getParameter("excapelido") %>"/><br>
                 
-                <label>exc apelido:</label><br>
-		<input type="text" name="execapelido"value="<%=request.getParameter("excapelido") %>"/><br>
+                
+                <input  hidden="hidden" type="text"  value="alteratarefa" name="logica">
 		<button type="submit">
-			OK
+			Alterar
 		</button>
 	</form>
+        </div>        
+        <datalist id="tipos">
+        <option value="servico">
+        <option value="doacao">
+        <option value="voluntariado">
+        <option value="transporte">
+         
     </body>
 </html>

@@ -118,7 +118,7 @@ public class UsuarioDAO {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao mostrar o produto: " + e);
+			System.out.println("Erro ao mostrar o usuario: " + e);
 
 		}
 		return lista;
@@ -139,7 +139,7 @@ public class UsuarioDAO {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao mostrar o produto: " + e);
+			System.out.println("Erro ao mostrar o usuario: " + e);
 
 		}
 		return lista;

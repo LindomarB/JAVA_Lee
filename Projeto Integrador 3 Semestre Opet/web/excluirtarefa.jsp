@@ -9,52 +9,51 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Excuir tarefa</title>
+        <link rel="stylesheet" href="styles/exclui.css">
     </head>
     <body>
-     idtarefa,idtipo,tiponome,descricao,dtsolicitacao,dtrealizacao,dtlimite,idreq,reqapelido,idexc,excapelido
-        
-        
-    <br0<br><br>
-        nao e preciso mostrar todos esses campos ao usuario somente <br>
-        o que for pertinente a elem,<br>
-        por traz ira carregar todos esses dados para enviar ao controller e executar a açao no banco<br>
-        <h2>so sera possivel excluir os registros ao qual o requistante seja o proprio usuario</h2>
+        <div id="tela">
         <form action='HAL9000' method='post'>
-		<label>id tarefa:</label><br>
-		<input type="text" name="idtarefa" value="<%=request.getParameter("idtarefa") %>"/><br>
+            <h1>Excluir tarefa</h1>
+            <hr size="2px" color="black" width="80%">
+		
+		<input type="text"hidden="hidden" name="idtarefa" Readonly value="<%=request.getParameter("idtarefa") %>"/>
 		 
-		<label>Id tipo:</label><br>
-		<input type="text" name="idtipo"value="<%=request.getParameter("idtipo") %>"/><br>
+		
+		<input type="text" hidden="hidden"name="idtipo" Readonly value="<%=request.getParameter("idtipo") %>"/>
 		
                 <label>tiponome:</label><br>
-		<input type="text" name="tiponome"value="<%=request.getParameter("tiponome") %>"/><br>
+		<input type="text" name="tiponome"value="<%=request.getParameter("tiponome") %>"Readonly/><br>
                 
                 <label>Descrição:</label><br>
-		<input type="text" name="descricao"value="<%=request.getParameter("descricao") %>"/><br>
+		<input type="text" name="descricao"value="<%=request.getParameter("descricao") %>"Readonly/><br>
                 
                 <label>Dtsolicitacao:</label><br>
-		<input type="text" name="dtsolicitacao"value="<%=request.getParameter("dtsolicitacao") %>"/><br>
+		<input type="text" name="dtsolicitacao"value="<%=request.getParameter("dtsolicitacao") %>"Readonly/><br>
                 
                 <label>Dtrealizacao:</label><br>
-		<input type="text" name="dtrealizacao"value="<%=request.getParameter("dtrealizacao") %>"/><br>
+		<input type="text" name="dtrealizacao"value="<%=request.getParameter("dtrealizacao") %>"Readonly/><br>
                 
                 <label>Dtlimite:</label><br>
-		<input type="text" name="dtlimite"value="<%=request.getParameter("dtlimite") %>"/><br>
+		<input type="text" name="dtlimite"value="<%=request.getParameter("dtlimite") %>"Readonly/><br>
                 
-                <label>id req:</label><br>
-		<input type="text" name="idreq"value="<%=request.getParameter("idreq") %>"/><br>
+               
+		<input type="text"hidden="hidden" name="idreq"value="<%=request.getParameter("idreq") %>"Readonly/>
                 
-                <label>apelido req:</label><br>
-		<input type="text" name="reqapelido"value="<%=request.getParameter("reqapelido") %>"/><br>
                 
-                <label>id exc:</label><br>
-		<input type="text" name="idexc"value="<%=request.getParameter("idexc") %>"/><br>
+		<input type="text" hidden="hidden"name="reqapelido"value="<%=request.getParameter("reqapelido") %>"Readonly/>
                 
-                <label>exc apelido:</label><br>
-		<input type="text" name="execapelido"value="<%=request.getParameter("excapelido") %>"/><br>
+                
+		<input type="text"  hidden="hidden" name="idexc"value="<%=request.getParameter("idexc") %>"Readonly/>
+                
+                <label>Executor:</label><br>
+		<input type="text" name="execapelido"value="<%=request.getParameter("excapelido") %>"Readonly/><br>
+                <input  hidden="hidden" type="text"  value="excluirtarefa" name="logica">
 		<button type="submit">
-			OK
+			Excluir
 		</button>
+        </form>
+        </div>
     </body>
 </html>

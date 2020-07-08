@@ -14,18 +14,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="styles/index.css">
+        <title>LOGIN</title>
+        <script mconst adUnitPath = '/6355419/Travel/Europe/France/Paris';
+const supportedSizes = [[728, 90], [300, 250]];
+
+googletag.defineSlot(adUnitPath, supportedSizes, 'leaderboard0')
+  .setTargeting('test', 'infinitescroll')
+  .addService(googletag.pubads());></script>
     </head>
     <body>
-        <h1 >Tela de login</h1>
+       
         <div id="tela">
+        <h1>Login</h1>
+        <hr size="2px" color="black" width="80%">
         <form method="post" action="HAL9000">
-            <br>
-            Login:<input type="text" name="apelido"/><br>
-            Senha:<input type="password" name="senha"/>
+            <p>Login:<input type="text" name="apelido"/></p>
+            <p>Senha:<input type="password" name="senha"/></p>
             <input  hidden="hidden" type="text"  value="login" name="logica">
-            <input  hidden="hidden" type="text"  value="null "name="descricao">
             <input type="submit" value="login" name="logica"/>
             <p>ainda não possui conta <a href="cadastro.jsp">click aqui</a></p>
         </form> 
@@ -38,6 +44,7 @@
         %>
         
         </div>
+        <div id="ads"><p><b>aqui vai um banner de ads</b></p></div>
         
     </body>
 </html>

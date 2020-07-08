@@ -15,7 +15,9 @@ public class ConnectionFactory {
                 if (conexao == null) {
                     Class.forName("oracle.jdbc.driver.OracleDriver");
                     conexao = DriverManager.getConnection(url, usuario, senha);
-             
+                            ///rerornar depois da conexao  alterar a sessao com dia mes e ano
+                            ////to_char(campo_data, 'dd/mm/yyyy' )
+
                     return conexao;
                 } 
             }catch (Exception e) {

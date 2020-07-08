@@ -1,0 +1,27 @@
+body{
+    background-color: lightblue;
+}
+#t1{
+    margin-left: 88%;
+    
+}
+#t2{
+    width: 40%;
+    height: 100%;
+   
+    float: left;
+}
+#t3{
+    width: 60%;
+    height: 100%;
+    
+    float: left;
+}
+#t4{
+    width: 50%;
+    height: 100%;
+   
+    margin-top: 15%;
+    margin-left: 30%;
+}
+

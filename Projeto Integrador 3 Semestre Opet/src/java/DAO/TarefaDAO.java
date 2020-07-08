@@ -52,7 +52,7 @@ public class TarefaDAO {
 			pst.execute();
 			conexao.commit();
 			pst.close();
-
+                        System.out.println("inseriu con sucesso");
 		} catch (SQLException e) {
                         System.out.println("erro ao inserir");
 			e.printStackTrace();
@@ -60,34 +60,40 @@ public class TarefaDAO {
 		}
 	}
 
-	/*public void alterar(Tarefa p) {
-		clausula = "update produto set produto_descricao=?,produto_preco=? where produto_id=?";
+	public void alterar(Tarefa t,int id) {
+		//clausula = "update produto set produto_descricao=?,produto_preco=? where produto_id=?";
+		clausula = "update tarefa set tarefa_descricao=?,data_solicitacao=?,data_realizacao=?,data_limite=?,id_executor=?,tipo_id=? where tarefa_id="+id+"";
 		try {
 			pst = conexao.prepareStatement(clausula);
-			pst.setString(1, p.getDescricao());
-			pst.setDouble(2, p.getPreco());
-			pst.setInt(3, p.getCodigo());
+			pst.setString(1, t.getTarefaDescricao());
+			pst.setString(2, t.getDtsolicitacao());
+			pst.setString(3, t.getDtrealizaçao());
+			pst.setString(4, t.getDtlimite());
+			pst.setInt(5, t.getIdExecutor());
+                        pst.setInt(6,t.getTipoId());
 			pst.executeUpdate();
 			conexao.commit();
 			pst.close();
-
+                        System.out.println("alterou com sucesso");
 		} catch (SQLException e) {
 			System.out.println("Erro ao alterar: " + e);
+                        e.printStackTrace();
 		}
 	}
 
 	public void excluir(int valor) {
-		clausula = "delete from produto where produto_id = " + valor;
+		clausula = "delete from tarefa where tarefa_id = " + valor;
 		try {
 			st = conexao.createStatement();
 			st.execute(clausula);
 			conexao.commit();
 			st.close();
+                        System.out.println("excluiu o treco");
 
 		} catch (SQLException e) {
 			System.out.println("Erro ao deletar: " + e);
 		}
-	}*/
+	}
 
 	private ArrayList<Tarefa> lista = new ArrayList<>();
 
@@ -98,8 +104,46 @@ public class TarefaDAO {
 "TIPO ON\n" +
 "TIPO.ID = TAREFA.TIPO_ID\n" +
 "JOIN USUARIO REQ ON \n" +
-"req.usuario_id= tarefa.id_requisitante join usuario exc on\n" +
-"exc.usuario_id= tarefa.id_executor";
+"req.usuario_id= tarefa.id_requisitante left join usuario exc on\n" +
+"exc.usuario_id= tarefa.id_executor\n" +
+"where id_executor  = 0";
+		try {
+			st = conexao.createStatement();
+			rs = st.executeQuery(clausula);
+			while (rs.next()) {
+				Tarefa t = new Tarefa();
+				t.setTarefaId(rs.getInt("TAREFA_ID"));
+				t.setTipoId(rs.getInt("Tipo_ID"));
+                                t.setTipoNome(rs.getString("TIPO_NOME"));
+				t.setTarefaDescricao(rs.getString("TAREFA_DESCRICAO"));
+				t.setDtsolicitacao(rs.getString("DATA_SOLICITACAO"));
+				t.setDtrealizaçao(rs.getString("DATA_REALIZACAO"));
+				t.setDtlimite(rs.getString("DATA_LIMITE"));
+                                t.setIdRequisitante(rs.getInt("ID_REQ"));
+                                t.setApelidoRequisitante(rs.getString("requer"));
+                                t.setIdExecutor(rs.getInt("ID_EXC"));
+                                t.setApelidoExecutor(rs.getString("executor"));
+				
+				lista.add(t);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("erro ao mostrar todos: " + e);
+
+		}
+		return lista;
+	}
+        
+        public ArrayList<Tarefa> mostrarTodosCompletados() {
+		clausula = "SELECT tarefa_id,TIPO_ID,TIPO_NOME,TAREFA_DESCRICAO,TAREFA.DATA_SOLICITACAO,tarefa.data_realizacao,tarefa.data_limite,REQ.USUARIO_ID as ID_REQ,REQ.USUARIO_APELIDO  as requer,EXC.USUARIO_ID as ID_EXC,EXC.USUARIO_APELIDO as executor\n" +
+"FROM TAREFA\n" +
+"JOIN\n" +
+"TIPO ON\n" +
+"TIPO.ID = TAREFA.TIPO_ID\n" +
+"JOIN USUARIO REQ ON \n" +
+"req.usuario_id= tarefa.id_requisitante left join usuario exc on\n" +
+"exc.usuario_id= tarefa.id_executor\n" +
+"where id_executor  != 0";
 		try {
 			st = conexao.createStatement();
 			rs = st.executeQuery(clausula);
@@ -129,6 +173,8 @@ public class TarefaDAO {
         
         
         
+        
+        
         public ArrayList<Tarefa> mostrarTarefaUsuario(String nome) {
 		clausula = "SELECT tarefa_id,TIPO_ID,TIPO_NOME,TAREFA_DESCRICAO,TAREFA.DATA_SOLICITACAO,tarefa.data_realizacao,tarefa.data_limite,REQ.USUARIO_ID as ID_REQ,REQ.USUARIO_APELIDO  as requer,EXC.USUARIO_ID as ID_EXC,EXC.USUARIO_APELIDO as executor\n" +
 "FROM TAREFA\n" +
@@ -136,7 +182,7 @@ public class TarefaDAO {
 "TIPO ON\n" +
 "TIPO.ID = TAREFA.TIPO_ID\n" +
 "JOIN USUARIO REQ ON \n" +
-"req.usuario_id= tarefa.id_requisitante join usuario exc on\n" +
+"req.usuario_id= tarefa.id_requisitante left join usuario exc on\n" +
 "exc.usuario_id= tarefa.id_executor where REQ.USUARIO_APELIDO like '"+nome+"'";
 		try {
 			st = conexao.createStatement();
