@@ -1,0 +1,38 @@
+{usuario:
+	{apelido: "jao", nome : "Jao do oso", data_criacao : "28/02/2020", senha : "1234"},
+	{apelido: "ze", nome : "ze das ostras", data_criacao : "28/02/2020", senha : "4321"}
+
+}
+utilizar um conjunto nao ordenado unico// sadd com apelido
+
+sadd apelido ze jao
+
+hmset ze nome "jao do Oso" data "28/04/2222" senha "123"
+hmset ze nome "ze da silva" data "28/04/2012" senha "123"
+
+
+
+
+{mensagem:
+	{id : 1,
+ 	texto: "textos",
+	data_envio: "data e hora do envio",
+	remetente: "nome do usuario que escreveu",
+	destinatario:[
+		{1: usuario},
+		{2 : usuario},
+		{3 : usuario},
+	],
+	resposta:[
+	{id 1, data_envio "25/05/2055", mensagem "testo da mensagem"},
+	{id 2, data_envio "25/05/2055", mensagem "testo da mensagem"}
+	] }
+} 
+zadd mensagems 1 "primeiro texto" 2 "segundio texto"
+hmset 1 texto "tche gay" data_envio "20/02/02 08:00" remetente "ze" destinatario "jao" resposta "semresposta"
+
+
+
+
+
+

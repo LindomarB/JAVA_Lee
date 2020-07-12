@@ -1,0 +1,83 @@
+ {"Receita":
+	 {
+	   "Nome": "Roscovo", "Calorias": 100 ,
+	   "Ingredientes": [
+		   { "Nome": "Arroz", "Preco": 1.25, "UnidadeMedida":"kg"},
+		   { "Nome": "Ovo", "Preco": .20, "UnidadeMedida":"UN"}, 
+		]
+		"ModoPreparo": [
+		   { 1:"Cozinhe o Arroz"},
+		   { 2:"Frite o Ovo"},
+		   { 3:"Coloque o Ovo em cima do Arroz"}, 
+		]
+	 }
+ }
+
+REDIS
+
+Estruturas de Dados possíveis
+STRING				Para uma chave existe um valor associado
+HASH				Para uma MainKey existem vários conjuntos Chave/valor associados
+LIST				Para uma chave existe um conjunto de valores não ordenados e permite duplicidade
+CONJUNTO			Para uma chave existe um conjunto de valores não ordenados e não permite duplicidade
+CONJUNTO ORDENADO	Para uma chave existe um conjunto de valores que podem ser ordenados e não permite duplicidade
+
+
+STRING
+
+SET Receita:Roscovo	 "{'Nome': 'Roscovo', 'Calorias': 100 , 'Ingredientes': [{ 'Nome': 'Arroz', 'Preco': 1.25, 'UnidadeMedida':'kg'},{'Nome': 'Ovo', 'Preco': .20, 'UnidadeMedida':'UN'},]}"
+
+
+HASH
+
+HMSET "Receita:Roscovo" Nome Roscovo Calorias 100 Ingredientes:Nome:0 Arroz  Ingredientes:Preco:0 1.25 Ingredientes:UnidadeMedida:0 Kg 
+Ingredientes:Nome:1 Ovo  Ingredientes:Preco:1 .20 Ingredientes:UnidadeMedida:1 UN 
+
+
+HSET Receita:Roscovo Nome Roscovo 
+HSET Receita:Roscovo Calorias 100 
+HSET Receita:Roscovo Ingredientes:Nome:0 Arroz
+HSET Receita:Roscovo Ingredientes:Preco:0 1.25
+HSET Receita:Roscovo Ingredientes:UnidadeMedida:0 Kg
+HSET Receita:Roscovo Ingredientes:Nome:1 Ovo  
+HSET Receita:Roscovo Ingredientes:Preco:1 .20 
+HSET Receita:Roscovo Ingredientes:UnidadeMedida:1 UN
+HSET Receita:Roscovo ModoPreparo:0 "Cozinhe o Arroz"
+HSET Receita:Roscovo ModoPreparo:1 "Frite o Ovo"
+HSET Receita:Roscovo ModoPreparo:2 "Coloque o Ovo em cima do Arroz"
+
+LISTA
+
+LPUSH Receita:Roscovo:Ingredientes:Nome Ovo Arroz
+LPUSH Receita:Roscovo:Ingredientes:Preco .20 1.25
+LPUSH Receita:Roscovo:Ingredientes:UnidadeMedida UN Kg
+
+LPUSH Receita:Roscovo:Ingredientes:0 Kg 1.25 Arroz
+LPUSH Receita:Roscovo:Ingredientes:1 UN .20 Ovo
+
+RPUSH Receita:Roscovo:ModoPreparo "Cozinhe o Arroz" "Frite o Ovo" "Coloque o Ovo em cima do Arroz"
+
+
+CONJUNTO
+
+SADD Receita:Roscovo:Ingredientes:Nome Arroz
+SADD Receita:Roscovo:Ingredientes:Nome Ovo
+
+smembers
+
+CONJUNTO ORDENADO
+ZADD ORDENADO 0 A
+ZADD ORDENADO 1 X
+ZADD ORDENADO 3 Z
+ZADD ORDENADO 13 XPTO
+ZADD ORDENADO 5 XPTO1
+ZRANGE ORDENADO 0 100
+ZADD ORDENADO 5 XYZ
+ZRANGE ORDENADO 0 100
+ZADD ORDENADO 5 A
+ZRANGE ORDENADO 0 -1 WITHSCORES 
+
+ZADD Receita:Roscovo:ModoPreparo 1 "Cozinhe o Arroz"
+ZADD Receita:Roscovo:ModoPreparo 2 "Frite o Ovo"
+ZADD Receita:Roscovo:ModoPreparo 3 "Coloque o Ovo em cima do Arroz"
+

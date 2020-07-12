@@ -1,0 +1,48 @@
+{"usuarios":
+    [
+        {"apelido": "Jão ", "nome":"Joao do Osso" , "data": "28/05/2008" ,"senha": 123},
+        {"apelido": "Ze", "nome":"jose do Osso" , "data": "28/04/2009" ,"senha": 432}
+    ]
+}
+
+{"mensagem":
+    [
+	    {
+            "id" : 1,
+ 	        "texto": "bom dia1",
+	        "data": "30/12/12",
+	        "remetente": "ZE",
+            "destinatario":  
+                [
+		            {"JAO"}
+	            ],
+            "resposta":
+                [
+                    {"id" : 0, "remetente": "jao" ,"destinatario": [{"ZE"}], "data" : "25/05/2055", "mensagem" : "e aew pos1"},
+                    {"id" : 1, "remetente": "ZE" ,"destinatario": [{"JAO"}], "data" : "13/12/12", "mensagem" : "OH Dom Piano!"},
+	                {"id" : 2, "remetente": "jao" ,"destinatario": [{"ZE"}], "data" : "13/12/12", "mensagem" : "Oh Long Jhonson"},
+                ] ,
+                
+        }
+    ]
+}
+
+
+
+SADD APELIDOS ZE
+SADD APELIDOS JAO
+HMSET USR:JAO APELIDO JAO NOME "JOAO DO OSSO" DATA "28/05/2008" SENHA "123"
+HMSET USR:ZE APELIDO ZE NOME "JOSE DO OSSO" DATA "28/04/2009" SENHA "432"
+
+
+-- ESTRUTURA PARA CONTROLE DSA RESPOSTAS DAS MENSAGENS
+ 
+HMSET MSG:1  REMETENTE ZE DESTINATARIO JAO  DATA "30/12/12" TEXTO "bom dia1"
+SADD DESTINATARIO:MSG:1 JAO
+HMSET MSG:2 REMETENTE JAO DESTINATARIO ZE RESPOSTA:MSG:1 0 DATA "25/05/2055" TEXTO "e aew pos0"
+ZADD RESPOSTA:MSG:1 0 "e aew pos0" 
+SADD DESTINATARIO:MSG:2 ZE
+HMSET MSG:2 REMETENTE ZE DESTINATARIO JAO RESPOSTA:MSG:1 2 DATA "13/12/12" TEXTO "Oh Dom Piano!"
+ZADD RESPOSTA:MSG:1 1 "Oh Dom Piano!" 
+HMSET MSG:3 REMETENTE JAO DESTINATARIO ZE RESPOSTA:MSG:1 2 DATA "13/12/12" TEXTO "oh long jhonson"
+ZADD RESPOSTA:MSG:1 2 "Oh Long Jhonson "

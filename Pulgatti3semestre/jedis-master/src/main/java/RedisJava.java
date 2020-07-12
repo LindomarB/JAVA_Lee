@@ -1,0 +1,69 @@
+import java.util.*;
+import redis.clients.jedis.Jedis; 
+
+public class RedisJava { 
+   public static void main(String[] args) { 
+      //Conectando no Redis server -  localhost 
+      Jedis jedis = new Jedis("localhost"); 
+      System.out.println("Connecção com o servidor"); 
+      //Testando se o servidor está execuando 
+      System.out.println("Servidor está executando: "+jedis.ping()); 
+
+      //Inserindo os dados em uma estrutura do tipo "string" 
+      jedis.set("ChaveExemplo", "Criando o primeiro conjunto chave-valor !"); 
+      // Recuperando os dados e mostrando na tela 
+      System.out.println("Lendo o valor guardado na chave : "+ jedis.get("ChaveExemplo")); 
+   
+
+      //Inserindo os dados em uma estrutura do tipo Lista "list"
+      jedis.lpush("ListaExemplo", "Redis"); 
+      jedis.lpush("ListaExemplo", "Aula"); 
+      jedis.lpush("ListaExemplo", "Trabalho de BD"); 
+      //  Recuperando os dados e mostrando na tela 
+      List<String> list = jedis.lrange("ListaExemplo", 0 ,100); 
+      
+      for(int i = 0; i<list.size(); i++) { 
+         System.out.println("Valor guardado na lista : "+list.get(i)); 
+      } 
+      
+      System.out.println("testes pessoais");
+      //exemplo set
+      jedis.set("chave:nome","valor:lindomar");
+      System.out.println("VALOR DA MINHA CHAVE: " +jedis.get("chave:nome"));
+      // exemplo  sadd
+      jedis.sadd("apelidos", "artemis","jao","bolagato","zezinboladao");
+      System.out.println("meu sadd: " + jedis.smembers("apelidos"));
+      //  exemplo de hset
+      jedis.hset("chave:usuario", "subchave:nome", "valor:jose");
+      System.out.println("hset chave:usuario: " + jedis.hget("chave:usuario", "subchave:nome"));
+      // zadd
+      jedis.zadd("chave:Deuses", 1 ,"valor:Zeus");
+      jedis.zadd("chave:Deuses",2,"valor:xuxa");
+      jedis.zadd("chave:Deuses",3,"valor:Zagod");
+      Set<String> lista = jedis.zrange("chave:Deuses", 0,10); 
+      for (String valor : lista) {
+    	  System.out.println("cada um");
+    	  System.out.println(valor);
+		
+      }
+      for(int i = 0; i<lista.size(); i++) { 
+    	  
+          System.out.println("Valor guardado na lista : "+lista.spliterator().toString());
+          } 
+       } 
+      
+      /*
+       *
+       * Set<String> list = jedis.zrange("Cleiton", 0 ,-1); 
+
+          for(int i = 0; i<list.size(); i++) { 
+             System.out.println("Valor guardado na lista : "+list.toString()); 
+          } 
+
+      
+
+      jedis.zadd("apelido", 1 , "apelido2");
+      System.out.println("Set zaad teste: " + jedis.zrange("apelido", 0, -1));
+o print do zadd ta dando erro*/
+
+   } 

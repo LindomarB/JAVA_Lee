@@ -1,0 +1,33 @@
+
+
+
+{"pessoas" :
+    [
+        {
+            "primeironome" : "Jão",
+            "sobrenome" : "do Osso",
+            "idade" : 30,
+            "telefone" : 
+                [
+                    {"tipo" : "casa","numero" :  35646419},
+                    {"tipo": "celular","numero" : 998799691}
+                ],
+            "endereco" : "Sao Tanaz"
+        }
+        ,
+        {
+            "primeiroNome" : "kain",
+            "sobreNome" : "do Osdent",
+            "idade" : 26,
+            "telefone" : 
+                [
+                    {"tipo" : "casa","numero" :  35646419},
+                    {"tipo": "celular","numero" : 998799691}
+                ] 
+       }
+    ]
+}
+
+outras formas de representar o mesmos dados no key value
+
+{"pessoa:Jão": {"nome":"Jão","sobrenome":"do Osso","idade":30}}

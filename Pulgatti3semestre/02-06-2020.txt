@@ -1,0 +1,36 @@
+Fernando Enrique Cardoso - 10000
+Moraes Moreira - 9000
+Caetano Veloso - 8543
+Gilberto Gil - 8255,45
+Rita Lee - 7012
+João Gordo - 9627,18
+Maria Bethanea - 6998,47
+Pato Donald - 5242,17
+Huguinho - 4200
+Zézinho - 3575,12
+Luizinho - 3575,12
+Mônica - 2567
+Cascão - 4589,9
+Cebolinha - 4300,2
+Tio Patinhas - 5378,79
+Magali - 4236,18
+Zé Carioca - 3469
+Maga Patalógica - 2978,55
+Pluto - 1250,46
+Anjinho - 2597,32
+
+mapear para 3 servidores -calcular a media dos salarios
+1000 9000 8543 8255,45 7012 9627,18 6998,47       ///(1 - 8490,87)
+
+5242,17 4200 3575,12 3575,12 2567 4589,9 4300,2 
+
+5378,79 4236,18 3469 2978,55 1250,46 2597,32
+
+reduce (soma/ numero de linhas) mapear so pegar o que voce quer
+
+(1 - 8490,87)
+(2- 4007,07)
+(3 - 3318,38)
+
+output input map>>
+

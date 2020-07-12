@@ -1,0 +1,111 @@
+{"usuarios":
+    [
+        {"apelido": "Jão ", "nome":"Joao do Osso" , "data": "28/05/2008" ,"senha": 123},
+        {"apelido": "Ze", "nome":"jose do Osso" , "data": "28/04/2009" ,"senha": 432}
+    ]
+}
+
+{"mensagem":
+    [
+	    {
+            "id" : 1,
+ 	        "texto": "bom dia1",
+	        "data": "30/12/12",
+	        "remetente": "ZE",
+            "destinatario":  
+                [
+		            {"JAO"}
+	            ],
+            "resposta":
+                [
+                    {"id" : 0, "remetente": "jao" ,"destinatario": [{"ZE"}], "data" : "25/05/2055", "mensagem" : "e aew pos1"},
+                    {"id" : 1, "remetente": "ZE" ,"destinatario": [{"JAO"}], "data" : "13/12/12", "mensagem" : "OH Dom Piano!"},
+	                {"id" : 2, "remetente": "jao" ,"destinatario": [{"ZE"}], "data" : "13/12/12", "mensagem" : "Oh Long Jhonson"},
+                ] ,
+                
+        }
+    ]
+}
+
+
+
+SADD APELIDOS ZE
+SADD APELIDOS JAO
+HMSET USR:JAO APELIDO JAO NOME "JOAO DO OSSO" DATA "28/05/2008" SENHA "123"
+HMSET USR:ZE APELIDO ZE NOME "JOSE DO OSSO" DATA "28/04/2009" SENHA "432"
+
+ 
+HMSET MSG:1  REMETENTE ZE DESTINATARIO JAO  DATA "30/12/12" TEXTO "bom dia1"
+SADD DESTINATARIO:MSG:1 JAO
+HMSET MSG:2 REMETENTE JAO DESTINATARIO ZE RESPOSTA:MSG:1 0 DATA "25/05/2055" TEXTO "e aew pos0"
+ZADD RESPOSTA:MSG:1 0 "e aew pos0" 
+SADD DESTINATARIO:MSG:2 ZE
+HMSET MSG:2 REMETENTE ZE DESTINATARIO JAO RESPOSTA:MSG:1 2 DATA "13/12/12" TEXTO "Oh Dom Piano!"
+ZADD RESPOSTA:MSG:1 1 "Oh Dom Piano!" 
+HMSET MSG:3 REMETENTE JAO DESTINATARIO ZE RESPOSTA:MSG:1 2 DATA "13/12/12" TEXTO "oh long jhonson"
+ZADD RESPOSTA:MSG:1 2 "Oh Long Jhonson "
+
+
+
+zadd msg:usr:ana 0 "texto"
+
+
+
+
+
+
+---ESTRUTURA PARA CONTROLE DA UNICIDADE DO APELIDO---
+SADD APELIDOS ZE
+SADD APELIDOS JAO
+SADD APELIDOS MARIA
+
+APELIDOS (ZE, JAO, MARIA)
+
+IF( SADD APELIDOS VAR_APELIDO)= 0
+THEN "USUARIO DUPLICADO-TENTE NOVAMENTE"
+
+----ESTRUTURA PARA CONTROLE DE DADOS DO USUARIO
+HSET 
+CHAVE SUBCHAVE VALOR
+USR:ZE APELIDO ZE
+        NOME "JOSE DA SILVA"
+        DATA "18/02/02"
+USR:JAO APELIDO JAO
+        NOME "JOAO DA SILVA"
+        DATA "18/02/02"
+USR:MARIA APELIDO MARIA
+        NOME "MARIA DAS DOR"
+        DATA "18/05/02"                
+
+NOME_USUARIO = HGET USR:ZE NOME 
+
+
+
+
+
+----ESTRUTURA PARA CONTROLE DE DADOS DA MENSAGEM
+HSET 
+CHAVE SUBCHAVE VALOR
+MSG:1   SENDER ZE
+        DATA "05/05/2020 9:30"
+        TEXTO "OLA"
+
+TEXTO_MENSAGEM = HSET MSF:1 TEXTO        
+---ESTRUTURA PARA CONTROLE DOS USUARIOS QUE RECEBERAM A MENSAGEM---
+SADD RECEIVER:MSG:1 JAO
+
+RECEIVER:MSG:1 (JAO, ZE)
+LIST = SMEMBERS RECEIVER:MSG:1
+
+-- ESTRUTURA PARA CONTROLE DSA RESPOSTAS DAS MENSAGENS
+CONJUNTO ORDENADO
+ZADD CHAVE              POSIÇAO  VALOR
+ZADD RESPOSTAS:MSG:1    0        2   
+ZADD RESPOSTA:MSG:1     1        3 
+LISTA_RESPOSTA = ZRANGE RESPOSTAS:MGS:1 0-1 WITHSCORES
+
+HMSET MSG:1 SENDER ZE DATA "12/12/12" TEXTO "MESNAGEM 1"
+SADD RECEIVER:MSG:1 JAO
+ZADD RESPOSTAS:MSG:1 0 "E AEW ZE"
+ 
+hmset id:1 id:mensagem 1 senderid 1 receiverid 2 respondendoid 3 data "18/02/15" texto "oh long jhonson"

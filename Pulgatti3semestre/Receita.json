@@ -1,0 +1,26 @@
+{ "Receita" :
+	
+	{ "Nome" : "Roscovo" , "Tempo Preparação" : "30 min", 
+	  "Ingredientes" : [ 
+	  	{ "Nome" : "Ovo",   "Quantidade" : 1 },
+	  	{ "Nome" : "Arroz", "Quantidade" : 200 , "Unidade Medida" : "Gramas"},
+	  	{ "Nome" : "Sal",   "Qtd"        : "A gosto"}
+	   ],
+	  "Modo preparo" : [
+	  	{ "Passo 1" : "Cozinhe o Arroz" },
+	  	{ "Passo 2" : "Frite o Ovo" },
+	  	{ "3"       : "Coloque o ovo em cima do arroz" },
+	  	{ "Final"   : "Deguste a Iguaria" }
+	  ]
+	}
+
+	{ "Nome" : "Macarrão Ligth", "Tempo Preparação" : "22 min", 
+	  "Ingr" : [ 
+	  	{ "Nome" : "Ovo",      "Quantidade" : 2 },
+	  	{ "Nome" : "Bacon",    "Quantidade" : 200 , "Unidade Medida" : "Gramas"},
+	  	{ "Nome" : "Queijo",   "Qtd"        : "A gosto"},
+	  	{ "Nome" : "Macarrão", "Qtd"        : "250 Gramas"},
+	   ]
+	}
+
+}
